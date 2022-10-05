@@ -8,7 +8,7 @@ class Instructor(models.Model):
 
 class Section(models.Model):
     course_id = models.IntegerField
-    instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE())
+    instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
     semester_code = models.IntegerField
     course_section = models.TextField(max_length=3)
     subject = models.TextField(max_length=4)
@@ -25,7 +25,7 @@ class Section(models.Model):
 
 
 class Meeting(models.Model):
-    section = models.ForeignKey(Section, on_delete=models.CASCADE())
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
     days = models.TextField(max_length=10)
     start_time = models.TextField(max_length=21)
     facility_description = models.TextField(max_length=25)
