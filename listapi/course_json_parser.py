@@ -1,9 +1,9 @@
 import json
 
-from models import *
+from .models import *
 
 
-class CourseJSONObjectParser:
+class CourseJsonParser:
     def __init__(self, json_object):
         self.json_object = json_object
 
