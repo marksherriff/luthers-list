@@ -160,4 +160,10 @@ class CourseJsonParserTest(TestCase):
         self.assertEqual(ray.name, "Raymond Pettit")
         self.assertEqual(ray.email, "rp6zr@virginia.edu")
 
+    def test_get_instructor_two_instructors(self):
+        cs3240 = json.loads(cs3240_002_json_string())
+        cjp = CourseJsonParser(cs3240)
+        baldy = cjp.get_instructor()
+        self.assertEqual(baldy.name, "Paul McBurney")  # Not Will
+        self.assertEqual(baldy.email, "pm8fc@virginia.edu")
 
