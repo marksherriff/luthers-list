@@ -40,7 +40,7 @@ class CourseJsonParser:
 
     def get_meetings(self):
         section = self.get_section()
-        if not Section.objects.filter(course_id=section.course_id).exists():
+        if not Section.objects.filter(course_number=section.course_number).exists():
             raise RuntimeError("Section doesn't exist and hasn't been created")
         if Meeting.objects.filter(section=section).exists():
             return Meeting.objects.filter(section=section)
