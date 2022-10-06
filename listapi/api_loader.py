@@ -4,16 +4,18 @@ from listapi.course_json_parser import CourseJsonParser
 
 
 def get_all_json_files():
-    pass
-    ## loop through all json files
-    ## or get the json for each subject somehow
-
-    ## call load_json_file (filename) if it's a file
-    ## or call load_json_string if string
-    ## or call load_json_array if array
+    json_files = []
+    for root, dirs, files in os.walk('JSON'):
+        for file in files:
+            if file.endswith('.json'):
+                json_files.append(os.path.join(root, file))
+    for each in json_files:
+        print(each)
+        load_json_file(each)
 
 
 def load_json_file(filename):
+    print("Opening:",filename)
     json_file = open(filename, 'r')
     json_string = json_file.read()
     load_json_string(json_string)
