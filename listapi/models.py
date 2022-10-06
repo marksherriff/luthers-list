@@ -8,13 +8,14 @@ class Instructor(models.Model):
 
 class Section(models.Model):
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
+    course_id = models.IntegerField(unique=True)
     course_number = models.IntegerField()
     semester_code = models.IntegerField()
     course_section = models.TextField(max_length=3)
     subject = models.TextField(max_length=4)
     catalog_number = models.IntegerField()
     description = models.TextField(max_length=100)
-    units = models.IntegerField()
+    units = models.TextField(max_length=10)
     component = models.TextField(max_length=3)
     class_capacity = models.IntegerField()
     wait_list = models.IntegerField()
@@ -28,6 +29,6 @@ class Meeting(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
     days = models.TextField(max_length=10)
     start_time = models.TextField(max_length=21)
-    facility_description = models.TextField(max_length=25)
+    facility_description = models.TextField(max_length=50)
     end_time = models.TextField(max_length=21)
 
