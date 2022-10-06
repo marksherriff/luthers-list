@@ -13,10 +13,7 @@ def load_api(request):
 
 def find_all_by_dept_old(request, dept):
     sections = Section.objects.filter(subject=dept)
-    instructors = Instructor.objects.all()
-    meetings = Meeting.objects.all()
-    all_sections_to_return = [*instructors, *meetings, *sections]
-    sections_serialized = serializers.serialize('json', all_sections_to_return)
+    sections_serialized = serializers.serialize('json', sections)
     return HttpResponse(sections_serialized, content_type='application/json')
 
 def find_all_by_dept(request, dept):
