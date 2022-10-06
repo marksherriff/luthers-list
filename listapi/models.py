@@ -8,7 +8,6 @@ class Instructor(models.Model):
 
 class Section(models.Model):
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
-    course_id = models.IntegerField()
     course_number = models.IntegerField(unique=True)
     semester_code = models.IntegerField()
     course_section = models.TextField(max_length=3)
@@ -17,7 +16,7 @@ class Section(models.Model):
     description = models.TextField(max_length=100)
     units = models.TextField(max_length=10)
     component = models.TextField(max_length=3)
-    class_capacity = models.IntegerField()
+    class_capacity = models.TextField(max_length=6)
     wait_list = models.IntegerField()
     wait_cap = models.IntegerField()
     enrollment_total = models.IntegerField()

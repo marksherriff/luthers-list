@@ -24,7 +24,7 @@ class CourseJsonParser:
                           semester_code=int(self.json_object["strm"]),
                           course_section=self.json_object["class_section"],
                           subject=self.json_object["subject"],
-                          catalog_number=int(self.json_object["catalog_nbr"]),
+                          catalog_number=self.json_object["catalog_nbr"],
                           description=self.json_object["descr"],
                           units=self.json_object["units"],
                           component=self.json_object["component"],
