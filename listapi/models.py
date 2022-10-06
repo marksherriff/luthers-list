@@ -8,8 +8,8 @@ class Instructor(models.Model):
 
 class Section(models.Model):
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
-    course_id = models.IntegerField(unique=True)
-    course_number = models.IntegerField()
+    course_id = models.IntegerField()
+    course_number = models.IntegerField(unique=True)
     semester_code = models.IntegerField()
     course_section = models.TextField(max_length=3)
     subject = models.TextField(max_length=4)
