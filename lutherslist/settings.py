@@ -75,24 +75,24 @@ WSGI_APPLICATION = 'lutherslist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd3h7ei9kfpdrcs',
-        'USER': 'qxunmquumspehl',
-        'PASSWORD': 'e89c682002405bad684b6a826ac10e56fbbc58125712ddb421d1c531d640a8af',
-        'HOST': 'ec2-34-199-68-114.compute-1.amazonaws.com',
-        'PORT': '5432',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd3h7ei9kfpdrcs',
+#         'USER': 'qxunmquumspehl',
+#         'PASSWORD': 'e89c682002405bad684b6a826ac10e56fbbc58125712ddb421d1c531d640a8af',
+#         'HOST': 'ec2-34-199-68-114.compute-1.amazonaws.com',
+#         'PORT': '5432',
+
+#     }
+# }
 #
 # if 'test' in sys.argv:
 #     DATABASES = {
