@@ -8,4 +8,7 @@ from .api_loader import *
 
 def load_api(request):
     get_all_json_files()
-    return HttpResponse("Hello, world. You're at the load_api index.")
+    return HttpResponse("Hello, world. I just read a whole lot of JSON files.")
+
+def load_dept(request, dept):
+    return HttpResponse("Loading:", dept)
