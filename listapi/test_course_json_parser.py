@@ -262,7 +262,7 @@ class CourseJsonParserTest(TestCase):
         self.assertEqual(course1110.semester_code, 1228)
         self.assertEqual(course1110.course_section, "001")
         self.assertEqual(course1110.subject, "CS")
-        self.assertEqual(course1110.catalog_number, "1110")
+        self.assertEqual(course1110.catalog_number, "1111")
         self.assertEqual(course1110.description, "Introduction to Programming")
         self.assertEqual(course1110.units, "3")
         self.assertEqual(course1110.component, "LEC")

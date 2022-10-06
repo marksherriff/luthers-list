@@ -34,9 +34,9 @@ class CourseJsonParser:
                           enrollment_available=self.json_object["enrollment_available"],
                           topic=self.json_object["topic"]
                           )
-        if not Section.objects.filter(course_id=section.course_id).exists():
+        if not Section.objects.filter(course_number=section.course_number).exists():
             section.save()
-        return Section.objects.get(course_id=section.course_id)
+        return Section.objects.get(course_number=section.course_number)
 
     def get_meetings(self):
         section = self.get_section()
