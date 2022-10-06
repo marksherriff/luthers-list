@@ -3,24 +3,24 @@ from django.db import models
 
 class Instructor(models.Model):
     name = models.CharField(max_length=100)
-    email = models.CharField(max_length=30)
+    email = models.CharField(max_length=30, unique=True)
 
 
 class Section(models.Model):
-    course_id = models.IntegerField
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
-    semester_code = models.IntegerField
+    course_number = models.IntegerField()
+    semester_code = models.IntegerField()
     course_section = models.TextField(max_length=3)
     subject = models.TextField(max_length=4)
-    catalog_number = models.IntegerField
+    catalog_number = models.IntegerField()
     description = models.TextField(max_length=100)
-    units = models.IntegerField
+    units = models.IntegerField()
     component = models.TextField(max_length=3)
-    class_capacity = models.IntegerField
-    wait_list = models.IntegerField
-    wait_cap = models.IntegerField
-    enrollment_total = models.IntegerField
-    enrollment_available = models.IntegerField
+    class_capacity = models.IntegerField()
+    wait_list = models.IntegerField()
+    wait_cap = models.IntegerField()
+    enrollment_total = models.IntegerField()
+    enrollment_available = models.IntegerField()
     topic = models.TextField(blank=True, null=True)
 
 

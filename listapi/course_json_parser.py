@@ -1,5 +1,3 @@
-import json
-
 from .models import *
 
 
@@ -14,3 +12,10 @@ class CourseJsonParser:
         email = first_instructor_json["email"]
         return Instructor(name=name, email=email)
 
+    def get_section(self):
+        ray = Instructor.objects.get(email="rp6zr@virginia.edu")
+        return Section(instructor=ray,
+                       course_section=self.json_object["class_section"],
+                       subject=self.json_object["subject"],
+                       # course_id=int(self.json_object["crse_id"]),
+                       semester_code=int(self.json_object["strm"]))
