@@ -19,7 +19,6 @@ class CourseJsonParser:
         if not Instructor.objects.filter(email=instructor.email).exists():
             raise RuntimeError("Instructor doesn't exist and hasn't been created")
         section = Section(instructor=instructor,
-                          course_id=int(self.json_object["crse_id"]),
                           course_number=self.json_object["class_nbr"],
                           semester_code=int(self.json_object["strm"]),
                           course_section=self.json_object["class_section"],
