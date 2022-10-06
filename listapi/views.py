@@ -6,6 +6,9 @@ from django.utils import timezone
 from django.core import serializers
 from .api_loader import *
 from .models import Section,Instructor,Meeting
+from .serializers import SectionSerializer, InstructorSerializer
+from rest_framework import viewsets
+from rest_framework import permissions
 
 def load_api(request):
     get_all_json_files()
@@ -18,10 +21,22 @@ def load_api_by_dept(request, dept):
 
 def find_all_by_dept(request, dept):
     sections = Section.objects.filter(subject=dept)
-    sections_serialized = serializers.serialize('json', sections)
+    sections_serialized = SectionSerializer(sections,many=True)
     return HttpResponse(sections_serialized, content_type='application/json')
 
 def find_all_by_dept_v2(request, dept):
     sections = Section.objects.filter(subject=dept)
     return render(request, 'findallbydept.html', {'sections': sections})
+
+class DeptViewSet(viewsets.ModelViewSet):
+    queryset = Section.objects.all()
+    serializer_class = SectionSerializer
+
+    def get_queryset(self):
+        dept = self.kwargs['dept']
+        return Section.objects.filter(subject=dept)
+
+class SectionViewSet(viewsets.ModelViewSet):
+    queryset = Section.objects.all()
+    serializer_class = SectionSerializer
 
