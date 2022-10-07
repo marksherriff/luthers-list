@@ -9,15 +9,7 @@ from .models import Section,Instructor,Meeting
 from .serializers import SectionSerializer, InstructorSerializer
 from rest_framework import viewsets
 
-def load_api(request):
-    get_all_json_files()
-    return HttpResponse("Hello, world. I just read a whole lot of JSON files.")
-
-def load_api_by_dept(request, dept):
-    filename = 'JSON/' + dept + '.json'
-    load_json_file(filename)
-    return HttpResponse("Hello, world. I just read a JSON file for " + dept + ".")
-
+### LOAD ALL SECTIONS FOR A GIVEN DEPARTMENT ###
 class DeptViewSet(viewsets.ModelViewSet):
     # queryset = Section.objects.all()
     serializer_class = SectionSerializer
@@ -26,7 +18,21 @@ class DeptViewSet(viewsets.ModelViewSet):
         dept = self.kwargs['dept']
         return Section.objects.filter(subject=dept)
 
+### LOAD ALL SECTIONS ###
 class SectionViewSet(viewsets.ModelViewSet):
     queryset = Section.objects.all()
     serializer_class = SectionSerializer
 
+### TODO: LOAD ALL DEPARTMENT CODES ###
+
+### LOAD JSON FILES FOR ALL DEPARTMENTS ###
+def load_api(request):
+    get_all_json_files()
+    return HttpResponse("Hello, world. I just read a whole lot of JSON files.")
+
+def load_api_by_dept(request, dept):
+    filename = 'JSON/' + dept + '.json'
+    load_json_file(filename)
+    return HttpResponse("Hello, world. I just read a JSON file for " + dept + ".")
+    
+### END LOAD JSON FILES FOR ALL DEPARTMENTS ###
