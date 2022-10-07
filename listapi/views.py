@@ -11,7 +11,6 @@ from rest_framework import viewsets
 
 ### LOAD ALL SECTIONS FOR A GIVEN DEPARTMENT ###
 class DeptViewSet(viewsets.ModelViewSet):
-    # queryset = Section.objects.all()
     serializer_class = SectionSerializer
 
     def get_queryset(self):
@@ -34,5 +33,5 @@ def load_api_by_dept(request, dept):
     filename = 'JSON/' + dept + '.json'
     load_json_file(filename)
     return HttpResponse("Hello, world. I just read a JSON file for " + dept + ".")
-    
+
 ### END LOAD JSON FILES FOR ALL DEPARTMENTS ###
