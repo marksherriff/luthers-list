@@ -25,7 +25,7 @@ class Section(models.Model):
 
 
 class Meeting(models.Model):
-    section = models.ForeignKey(Section, on_delete=models.CASCADE)
+    section = models.ForeignKey(Section, related_name='meetings', on_delete=models.CASCADE)
     days = models.TextField(max_length=10)
     start_time = models.TextField(max_length=21)
     facility_description = models.TextField(max_length=50)
