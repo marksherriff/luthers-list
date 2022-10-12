@@ -24,5 +24,9 @@ class SectionSerializer(serializers.ModelSerializer):
         model = Section
         fields = ['instructor', 'course_number', 'semester_code', 'course_section', 'subject', 'catalog_number', 'description', 'units', 'component', 'class_capacity', 'wait_list', 'wait_cap', 'enrollment_total', 'enrollment_available', 'topic', 'meetings']
 
+class DepartmentSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = Section
+        fields = ['subject']
 

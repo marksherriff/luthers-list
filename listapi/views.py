@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.core import serializers
 from .api_loader import *
 from .models import Section, Instructor, Meeting
-from .serializers import SectionSerializer, InstructorSerializer
+from .serializers import SectionSerializer, DepartmentSerializer
 from rest_framework import viewsets
 
 
@@ -22,12 +22,20 @@ class DeptViewSet(viewsets.ModelViewSet):
 
 
 # --- LOAD ALL SECTIONS --- #
-class SectionViewSet(viewsets.ModelViewSet):
-    queryset = Section.objects.all()
-    serializer_class = SectionSerializer
+# REMOVED because it takes too long to load and is too many records
+# class SectionViewSet(viewsets.ModelViewSet):
+#     queryset = Section.objects.all()
+#     serializer_class = SectionSerializer
 
 
-# --- TODO: LOAD ALL DEPARTMENT CODES --- #
+# --- LOAD ALL DEPARTMENT CODES --- #
+
+class DeptListViewSet(viewsets.ModelViewSet):
+    serializer_class = DepartmentSerializer
+
+    def get_queryset(self):
+        queryset = Section.objects.values('subject').distinct().order_by('subject')
+        return queryset
 
 # --- LOAD JSON FILES FOR ALL DEPARTMENTS --- #
 def load_api(request):
